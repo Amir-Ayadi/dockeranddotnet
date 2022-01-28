@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockeranddotnetimagedeployment
+spec:
+  selector:
+    matchLabels:
+      app: dockeranddotnetimagedeployment-pod
+  template:
+    metadata:
+      labels:
+        app: dockeranddotnetimagedeployment-pod
+    spec:
+      containers:
+      - name: dockeranddotnetimagedeployment-container
+        image: dockeranddotnetimage:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5080
